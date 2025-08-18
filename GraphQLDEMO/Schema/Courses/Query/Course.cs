@@ -9,7 +9,8 @@ namespace GraphQLDEMO.Schema.Courses.Query
         public Guid Id { get; set; }
         public string Name { get; set; }
         public Asignature Asignature { get; set; }
-        [GraphQLIgnore]
+
+        [IsProjected]
         public Guid InstructorId{ get; set; }
 
         [GraphQLNonNullType]

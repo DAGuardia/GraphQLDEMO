@@ -1,5 +1,12 @@
 ﻿using Bogus;
+using GraphQLDEMO.Schema.Courses.Filters;
+using GraphQLDEMO.Schema.Courses.Sorters;
+using GraphQLDEMO.services;
 using GraphQLDEMO.services.Courses;
+using HotChocolate;
+using HotChocolate.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 using static GraphQLDEMO.Schema.Courses.Common;
 
@@ -24,6 +31,21 @@ namespace GraphQLDEMO.Schema.Courses.Query
                 Asignature = x.Asignature,
                 InstructorId = x.InstructorID
             }).ToList();
+        }
+
+        [UsePaging(DefaultPageSize = 10, IncludeTotalCount = true)]
+        [UseProjection]
+        [UseFiltering(typeof(CourseFilter))]
+        [UseSorting(typeof(CourseSorter))]
+        public IQueryable<Course> GetPaginatedCourses([Service] IDbContextFactory<CourseDbContext> dbContextFactory)
+        {
+            return dbContextFactory.CreateDbContext().Courses.Select(x => new Course
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Asignature = x.Asignature,
+                InstructorId = x.InstructorID
+            });
         }
         [UseOffsetPaging(IncludeTotalCount = true, DefaultPageSize = 10)]
         public async Task<IEnumerable<Course>> GetOffsetCourses()

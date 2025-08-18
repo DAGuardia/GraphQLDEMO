@@ -12,9 +12,12 @@ builder.Services.AddGraphQLServer()
     .AddQueryType<Query>()
     .AddMutationType<Mutation>()
     .AddSubscriptionType<Subscription>()
-    .AddInMemorySubscriptions();
+    .AddInMemorySubscriptions()
+    .AddFiltering()
+    .AddSorting()
+    .AddProjections();
 
-builder.Services.AddPooledDbContextFactory<CourseDbContext>(o => o.UseSqlite(builder.Configuration.GetConnectionString("Default")) );
+builder.Services.AddPooledDbContextFactory<CourseDbContext>(o => o.UseSqlite(builder.Configuration.GetConnectionString("Default")).LogTo(Console.WriteLine) );
 builder.Services.AddScoped<CoursesRepository>();
 builder.Services.AddScoped<InstructorsRepository>();
 builder.Services.AddScoped<InstructorDataloader>();

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Bogus" Version="35.6.3" />
+    <PackageReference Include="HotChocolate" Version="15.1.8" />
     <PackageReference Include="HotChocolate.AspNetCore" Version="15.1.8" />
     <PackageReference Include="HotChocolate.Data" Version="15.1.8" />
     <PackageReference Include="HotChocolate.Data.EntityFramework" Version="15.1.8" />
