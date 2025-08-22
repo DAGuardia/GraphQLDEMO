@@ -1,7 +1,7 @@
 ﻿using FirebaseAdmin.Auth;
 using GraphQLDEMO.Dataloaders;
 using GraphQLDEMO.services.Courses;
-using static GraphQLDEMO.Schema.Courses.Common;
+using static GraphQLDEMO.Schema.Courses.Models.Common;
 
 namespace GraphQLDEMO.Schema.Courses.Query
 {

@@ -8,7 +8,7 @@ using HotChocolate.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
-using static GraphQLDEMO.Schema.Courses.Common;
+using static GraphQLDEMO.Schema.Courses.Models.Common;
 
 namespace GraphQLDEMO.Schema.Courses.Query
 {

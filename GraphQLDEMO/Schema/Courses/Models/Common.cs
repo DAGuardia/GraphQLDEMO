@@ -1,4 +1,4 @@
-﻿namespace GraphQLDEMO.Schema.Courses
+﻿namespace GraphQLDEMO.Schema.Courses.Models
 {
     public class Common
     {
