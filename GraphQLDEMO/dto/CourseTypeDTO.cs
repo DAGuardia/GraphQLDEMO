@@ -1,4 +1,5 @@
-﻿using static GraphQLDEMO.Schema.Courses.Common;
+﻿using GraphQLDEMO.Schema.Courses;
+using static GraphQLDEMO.Schema.Courses.Common;
 
 namespace GraphQLDEMO.DTO
 {
@@ -11,6 +12,8 @@ namespace GraphQLDEMO.DTO
         public InstructorDTO Instructor {get; set;}
 
         public IEnumerable<StudentDTO> Students {get; set;}
+        public string? CreatorId { get; internal set; }
+        
     }
 
 }

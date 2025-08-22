@@ -1,6 +1,6 @@
 ﻿namespace GraphQLDEMO.Schema.Courses.Query
 {
-    public class Instructor
+    public class Instructor : ISearchResult
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }

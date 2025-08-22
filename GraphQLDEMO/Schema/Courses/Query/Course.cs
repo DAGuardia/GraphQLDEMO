@@ -1,10 +1,11 @@
-﻿using GraphQLDEMO.Dataloaders;
+﻿using FirebaseAdmin.Auth;
+using GraphQLDEMO.Dataloaders;
 using GraphQLDEMO.services.Courses;
 using static GraphQLDEMO.Schema.Courses.Common;
 
 namespace GraphQLDEMO.Schema.Courses.Query
 {
-    public class Course
+    public class Course : ISearchResult
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -26,6 +27,15 @@ namespace GraphQLDEMO.Schema.Courses.Query
             };
         }
         public IEnumerable<Student> Students {get; set;}
+        [IsProjected(true)]
+        public string? CreatorID { get; set; } = string.Empty;
+        public async Task<UserType?> Creator([Service] UserDataloader userDataloader) 
+        {
+            if (CreatorID == null)
+                return new UserType();
+
+            return await userDataloader.LoadAsync(CreatorID, CancellationToken.None);
+        }
     }
 
 }
